@@ -29,11 +29,11 @@ function isAdvantage(playerOnePoints, playerTwoPoints) {
         playerOnePoints >= DEUCE_POINTS &&
         playerTwoPoints >= DEUCE_POINTS &&
         playerOnePoints + playerTwoPoints > DEUCE_POINTS + DEUCE_POINTS &&
-        hasAtLeastPointDifferenceOf(playerOnePoints, playerTwoPoints, ADVANTAGE_POINT_DIFFERENCE)
+        hasPointDifferenceOfAtLeast(playerOnePoints, playerTwoPoints, ADVANTAGE_POINT_DIFFERENCE)
     );
 }
 
-function hasAtLeastPointDifferenceOf(playerOnePoints, playerTwoPoints, difference) {
+function hasPointDifferenceOfAtLeast(playerOnePoints, playerTwoPoints, difference) {
     return Math.abs(playerOnePoints - playerTwoPoints) >= difference;
 }
 
@@ -48,7 +48,7 @@ function isDraw(playerOnePoints, playerTwoPoints) {
 function isWin(playerOnePoints, playerTwoPoints) {
     return (
         (playerOnePoints >= WINNING_POINTS || playerTwoPoints >= WINNING_POINTS) &&
-        hasAtLeastPointDifferenceOf(playerOnePoints, playerTwoPoints, WINNING_POINT_DIFFERENCE)
+        hasPointDifferenceOfAtLeast(playerOnePoints, playerTwoPoints, WINNING_POINT_DIFFERENCE)
     );
 }
 
