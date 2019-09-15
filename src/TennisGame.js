@@ -1,5 +1,4 @@
-const ZERO_POINTS = 'love';
-const ONE_POINT = 'fifteen';
+const VERBAL_POINTS = ['love', 'fifteen'];
 class TennisGame {
     constructor() {
         this.playerOnePoints = 0;
@@ -10,11 +9,15 @@ class TennisGame {
         this.playerOnePoints++;
     }
 
+    addPointToPlayerTwo() {
+        this.playerTwoPoints++;
+    }
+
     score() {
         if (!this.isDraw()) {
-            return `${ONE_POINT}, ${ZERO_POINTS}`;
+            return `${VERBAL_POINTS[this.playerOnePoints]}, ${VERBAL_POINTS[this.playerTwoPoints]}`;
         }
-        return `${ZERO_POINTS} all`;
+        return `${VERBAL_POINTS[this.playerOnePoints]} all`;
     }
 
     isDraw() {
