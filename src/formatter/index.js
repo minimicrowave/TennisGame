@@ -1,6 +1,11 @@
 const POINTS_TO_SCORE = ['love', 'fifteen', 'thirty', 'forty'];
 const DEUCE_SCORE = 'deuce!';
 const ADVANTAGE_SCORE = 'advantage';
+const GAME_WON_SCORE = 'Game';
+
+function formatGameWon(winningPlayerName) {
+    return `${GAME_WON_SCORE}, ${winningPlayerName}`;
+}
 
 function formatAdvantage(playerWithAdvantage) {
     return `${ADVANTAGE_SCORE}, ${playerWithAdvantage}`;
@@ -22,5 +27,6 @@ module.exports = {
     formatAdvantage,
     formatDeuce,
     formatDrawScore,
+    formatGameWon,
     formatScore
 };

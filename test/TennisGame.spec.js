@@ -45,10 +45,13 @@ describe('TennisGame', () => {
             expect(game.score()).to.equal('love, forty');
         });
 
-        it('should return "deuce" if both players have scored 3 points', () => {
+        it('should return "deuce!" if both players have scored 3 points or are tied at above 3 points', () => {
             const game = new TennisGame();
             setGameToDeuce(game);
-            expect(game.score()).to.equal('deuce');
+            expect(game.score()).to.equal('deuce!');
+            game.addPointToPlayerOne();
+            game.addPointToPlayerTwo();
+            expect(game.score()).to.equal('deuce!');
         });
 
         it('should return "advantage, Player 1" if player 1 scores an advantage point', () => {
@@ -63,6 +66,43 @@ describe('TennisGame', () => {
             setGameToDeuce(game);
             game.addPointToPlayerTwo();
             expect(game.score()).to.equal('advantage, Player 2');
+        });
+
+        it('should return "advantage, Player 2" if player 2 scores an advantage point', () => {
+            const game = new TennisGame();
+            setGameToDeuce(game);
+            game.addPointToPlayerTwo();
+            expect(game.score()).to.equal('advantage, Player 2');
+        });
+
+        it('should return "Game, {winningPlayer}" if player wins a game', () => {
+            let game = new TennisGame();
+            game.addPointToPlayerOne();
+            game.addPointToPlayerOne();
+            game.addPointToPlayerOne();
+            game.addPointToPlayerOne();
+            expect(game.score()).to.equal('Game, Player 1');
+            game = new TennisGame();
+            game.addPointToPlayerTwo();
+            game.addPointToPlayerOne();
+            game.addPointToPlayerOne();
+            game.addPointToPlayerTwo();
+            game.addPointToPlayerTwo();
+            game.addPointToPlayerTwo();
+            expect(game.score()).to.equal('Game, Player 2');
+        });
+
+        it('should return "Game, {winningPlayer}" if player wins a game after a deuce', () => {
+            let game = new TennisGame();
+            setGameToDeuce(game);
+            game.addPointToPlayerOne();
+            game.addPointToPlayerOne();
+            expect(game.score()).to.equal('Game, Player 1');
+            game = new TennisGame();
+            setGameToDeuce(game);
+            game.addPointToPlayerTwo();
+            game.addPointToPlayerTwo();
+            expect(game.score()).to.equal('Game, Player 2');
         });
     });
 });
