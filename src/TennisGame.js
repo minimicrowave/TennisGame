@@ -1,21 +1,24 @@
 const { gameService } = require('./services');
+const { Player } = require('./models');
+const DEFAULT_NAME_PLAYER_ONE = 'Player 1';
+const DEFAULT_NAME_PLAYER_TWO = 'Player 2';
 
 class TennisGame {
     constructor() {
-        this.playerOnePoints = 0;
-        this.playerTwoPoints = 0;
+        this.playerOne = new Player(DEFAULT_NAME_PLAYER_ONE);
+        this.playerTwo = new Player(DEFAULT_NAME_PLAYER_TWO);
     }
 
     addPointToPlayerOne() {
-        this.playerOnePoints++;
+        this.playerOne.addPoint();
     }
 
     addPointToPlayerTwo() {
-        this.playerTwoPoints++;
+        this.playerTwo.addPoint();
     }
 
     score() {
-        return gameService.calculateScore(this.playerOnePoints, this.playerTwoPoints);
+        return gameService.calculateScore(this.playerOne, this.playerTwo);
     }
 }
 
