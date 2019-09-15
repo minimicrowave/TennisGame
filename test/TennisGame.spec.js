@@ -50,5 +50,12 @@ describe('TennisGame', () => {
             setGameToDeuce(game);
             expect(game.score()).to.equal('deuce');
         });
+
+        it('should return "advantage, Player 1" if player 1 scores an advantage point', () => {
+            const game = new TennisGame();
+            setGameToDeuce(game);
+            game.addPointToPlayerOne();
+            expect(game.score()).to.equal('advantage, Player 1');
+        });
     });
 });

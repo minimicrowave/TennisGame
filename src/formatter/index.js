@@ -1,5 +1,10 @@
 const POINTS_TO_SCORE = ['love', 'fifteen', 'thirty', 'forty'];
 const DEUCE_SCORE = 'deuce';
+const ADVANTAGE_SCORE = 'advantage';
+
+function formatAdvantage(playerWithAdvantage) {
+    return `${ADVANTAGE_SCORE}, ${playerWithAdvantage}`;
+}
 
 function formatDeuce() {
     return DEUCE_SCORE;
@@ -14,6 +19,7 @@ function formatScore(playerOnePoints, playerTwoPoints) {
 }
 
 module.exports = {
+    formatAdvantage,
     formatDeuce,
     formatDrawScore,
     formatScore
