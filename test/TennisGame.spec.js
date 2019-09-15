@@ -2,6 +2,15 @@ const TennisGame = require('../src/TennisGame');
 const { expect } = require('chai');
 
 describe('TennisGame', () => {
+    function setGameToDeuce(tennisGame) {
+        tennisGame.addPointToPlayerOne();
+        tennisGame.addPointToPlayerOne();
+        tennisGame.addPointToPlayerOne();
+        tennisGame.addPointToPlayerTwo();
+        tennisGame.addPointToPlayerTwo();
+        tennisGame.addPointToPlayerTwo();
+    }
+
     describe('.score()', () => {
         it('should return "love all" right after initialization', () => {
             const game = new TennisGame();
@@ -34,6 +43,12 @@ describe('TennisGame', () => {
             game.addPointToPlayerTwo();
             game.addPointToPlayerTwo();
             expect(game.score()).to.equal('love, forty');
+        });
+
+        it('should return "deuce" if both players have scored 3 points', () => {
+            const game = new TennisGame();
+            setGameToDeuce(game);
+            expect(game.score()).to.equal('deuce');
         });
     });
 });
