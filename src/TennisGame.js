@@ -1,4 +1,4 @@
-const gameService = require('./services/game');
+const { gameService } = require('./services');
 
 class TennisGame {
     constructor() {
