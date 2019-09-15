@@ -14,10 +14,10 @@ class TennisGame {
     }
 
     score() {
-        if (!this.isDraw()) {
-            return `${VERBAL_POINTS[this.playerOnePoints]}, ${VERBAL_POINTS[this.playerTwoPoints]}`;
+        if (this.isDraw()) {
+            return `${VERBAL_POINTS[this.playerOnePoints]} all`;
         }
-        return `${VERBAL_POINTS[this.playerOnePoints]} all`;
+        return `${VERBAL_POINTS[this.playerOnePoints]}, ${VERBAL_POINTS[this.playerTwoPoints]}`;
     }
 
     isDraw() {
