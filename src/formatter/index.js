@@ -1,4 +1,4 @@
-const VERBAL_POINTS = ['love', 'fifteen'];
+const VERBAL_POINTS = ['love', 'fifteen', 'thirty'];
 
 function formatDrawScore(playersPoints) {
     return `${VERBAL_POINTS[playersPoints]} all`;

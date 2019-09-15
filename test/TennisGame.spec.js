@@ -20,5 +20,12 @@ describe('TennisGame', () => {
             game.addPointToPlayerTwo();
             expect(game.score()).to.equal('fifteen all');
         });
+
+        it('should return "thirty love" if after player 1 scores a point', () => {
+            const game = new TennisGame();
+            game.addPointToPlayerOne();
+            game.addPointToPlayerOne();
+            expect(game.score()).to.equal('thirty, love');
+        });
     });
 });
