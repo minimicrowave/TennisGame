@@ -1,4 +1,5 @@
-const VERBAL_POINTS = ['love', 'fifteen'];
+const gameService = require('./services/game');
+
 class TennisGame {
     constructor() {
         this.playerOnePoints = 0;
@@ -14,15 +15,9 @@ class TennisGame {
     }
 
     score() {
-        if (this.isDraw()) {
-            return `${VERBAL_POINTS[this.playerOnePoints]} all`;
-        }
-        return `${VERBAL_POINTS[this.playerOnePoints]}, ${VERBAL_POINTS[this.playerTwoPoints]}`;
+        return gameService.calculateScore(this.playerOnePoints, this.playerTwoPoints);
     }
 
-    isDraw() {
-        return this.playerOnePoints === this.playerTwoPoints;
-    }
 }
 
 module.exports = TennisGame;
