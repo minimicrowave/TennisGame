@@ -57,5 +57,12 @@ describe('TennisGame', () => {
             game.addPointToPlayerOne();
             expect(game.score()).to.equal('advantage, Player 1');
         });
+
+        it('should return "advantage, Player 2" if player 2 scores an advantage point', () => {
+            const game = new TennisGame();
+            setGameToDeuce(game);
+            game.addPointToPlayerTwo();
+            expect(game.score()).to.equal('advantage, Player 2');
+        });
     });
 });

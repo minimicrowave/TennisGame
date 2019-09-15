@@ -17,7 +17,6 @@ class TennisGame {
     score() {
         return gameService.calculateScore(this.playerOnePoints, this.playerTwoPoints);
     }
-
 }
 
 module.exports = TennisGame;
