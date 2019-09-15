@@ -18,15 +18,9 @@ Implement a simple TennisGame consisting of two players.
 
 - A game is **won by the player 1 to reach four points** in total **or in a deuce at least two points more** than the opponent.
 
-## Technical Requirements
-
-### Basic
-
-- TennisGame should print the score based on the current players' points.
+## Requirements
 
 - If both players have the same points but less than three points each (e.g. 0-0, 1-1, or 2-2) then TennisGame should print "**{score} all**". For example, if both players have zero points, then TennisGame should print "**love all**".
-
-### Intermediate
 
 - The player 1's score should always be printed before the player 2's score, like so:
 
@@ -40,16 +34,16 @@ Implement a simple TennisGame consisting of two players.
 
 - Once a deuce is scored, any point scored thereafter prints the advantage to the player. For example, if player 1 scores a point after deuce, the game prints "**advantage Player 1**".
 
-### Advanced
-
 - When a player wins a game, TennisGame should print "**Game, {winning player's name}**". For example, if player 1 wins a game, TennisGame prints "**Game, Player 1**".
+
+## Further Requirements
 
 - TennisGame can set the players names.
 
-- TennisGame prints when a set is won (a set is won by the player who wins 6 games first).
+- TennisGame can display when a set is won (a set is won by the player who wins 6 games first).
 
 - Each set can have tiebreakers, which are similar to deuce in games (i.e. if, within a set, games won are tied 5-5 by both players, one of the players needs to win 2 games more than the other to win that set).
 
-- TennisGame can set the players' genders
+- TennisGame can set the players' genders.
 
 - TennisGame prints when the match is won by a player (men require 3 sets to win a match; women require 2 sets to win a match).
