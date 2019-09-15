@@ -1,10 +1,10 @@
-const VERBAL_POINTS = ['love', 'fifteen'];
+const formatter = require('../../formatter');
 
 function calculateScore(playerOnePoints, playerTwoPoints) {
     if (isDraw(playerOnePoints, playerTwoPoints)) {
-        return `${VERBAL_POINTS[playerOnePoints]} all`;
+        return formatter.formatDrawScore(playerOnePoints);
     }
-    return `${VERBAL_POINTS[playerOnePoints]}, ${VERBAL_POINTS[playerTwoPoints]}`;
+    return formatter.formatScore(playerOnePoints, playerTwoPoints);
 }
 
 function isDraw(playerOnePoints, playerTwoPoints) {
