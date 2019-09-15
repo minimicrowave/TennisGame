@@ -1,5 +1,5 @@
 const POINTS_TO_SCORE = ['love', 'fifteen', 'thirty', 'forty'];
-const DEUCE_SCORE = 'deuce';
+const DEUCE_SCORE = 'deuce!';
 const ADVANTAGE_SCORE = 'advantage';
 
 function formatAdvantage(playerWithAdvantage) {
