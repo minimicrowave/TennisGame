@@ -98,4 +98,16 @@ describe('TennisGame', () => {
             expect(game.score()).to.equal('Game, Player 2');
         });
     });
+
+    describe('.constructor()', () => {
+        it('should allow players names to be set', () => {
+            const game = new TennisGame('Ezekiel', 'Ozymandias');
+            setGameToDeuce(game);
+            game.addPointToPlayerOne();
+            expect(game.score()).to.equal('advantage, Ezekiel');
+            game.addPointToPlayerTwo();
+            game.addPointToPlayerTwo();
+            expect(game.score()).to.equal('advantage, Ozymandias');
+        });
+    });
 });

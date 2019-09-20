@@ -3,9 +3,9 @@ const { Player } = require('./models');
 const { DEFAULT_NAMES } = require('./constants');
 
 class TennisGame {
-    constructor() {
-        this.playerOne = new Player(DEFAULT_NAMES.PLAYER_ONE);
-        this.playerTwo = new Player(DEFAULT_NAMES.PLAYER_TWO);
+    constructor(playerOneName, playerTwoName) {
+        this.playerOne = new Player(playerOneName || DEFAULT_NAMES.PLAYER_ONE);
+        this.playerTwo = new Player(playerTwoName || DEFAULT_NAMES.PLAYER_TWO);
         this.gameService = new GameService();
     }
 
