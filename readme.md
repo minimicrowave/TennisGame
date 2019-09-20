@@ -1,8 +1,12 @@
 # Instructions
 
-Clone this repository and install the required modules with `npm install`. Tests should be written in `test/TennisGame.spec.js`, and code for your app should be written in `src/TennisGame.js`.
+Clone this repository and install the required modules with `npm install`. 
 
-The rules are defined below.
+Open your terminal, and while you are in the directory with this repository, run `npm run test`. A dummy test has been written for this repository, and it should pass.
+
+Further tests should be written in `test/TennisGame.spec.js`, and code for your TennisGame app should be written in `src/TennisGame.js`.
+
+The rules for your app are defined below.
 
 # Overview
 
