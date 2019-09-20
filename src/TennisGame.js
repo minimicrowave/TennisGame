@@ -1,12 +1,12 @@
-const { gameService } = require('./services');
+const GameService = require('./services/game');
 const { Player } = require('./models');
-const DEFAULT_NAME_PLAYER_ONE = 'Player 1';
-const DEFAULT_NAME_PLAYER_TWO = 'Player 2';
+const { DEFAULT_NAMES } = require('./constants');
 
 class TennisGame {
     constructor() {
-        this.playerOne = new Player(DEFAULT_NAME_PLAYER_ONE);
-        this.playerTwo = new Player(DEFAULT_NAME_PLAYER_TWO);
+        this.playerOne = new Player(DEFAULT_NAMES.PLAYER_ONE);
+        this.playerTwo = new Player(DEFAULT_NAMES.PLAYER_TWO);
+        this.gameService = new GameService();
     }
 
     addPointToPlayerOne() {
@@ -18,7 +18,7 @@ class TennisGame {
     }
 
     score() {
-        return gameService.calculateScore(this.playerOne, this.playerTwo);
+        return this.gameService.calculateScore(this.playerOne, this.playerTwo);
     }
 }
 

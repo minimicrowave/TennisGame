@@ -1,57 +1,61 @@
 const formatter = require('../../formatter');
-const DEUCE_POINTS = 3;
-const WINNING_POINTS = 4;
-const ADVANTAGE_POINT_DIFFERENCE = 1;
-const WINNING_POINT_DIFFERENCE = 2;
+const { POINTS } = require('../../constants');
+const { DIFFERENCE, DEUCE, WIN } = POINTS;
 
-function calculateScore(playerOne, playerTwo) {
-    const playerOnePoints = playerOne.getPoints();
-    const playerTwoPoints = playerTwo.getPoints();
-
-    if (isWin(playerOnePoints, playerTwoPoints)) {
-        return formatter.formatGameWon(getLeadingPlayerName(playerOne, playerTwo));
-    } else if (isAdvantage(playerOnePoints, playerTwoPoints)) {
-        return formatter.formatAdvantage(getLeadingPlayerName(playerOne, playerTwo));
-    } else if (isDeuce(playerOnePoints, playerTwoPoints)) {
-        return formatter.formatDeuce();
-    } else if (isDraw(playerOnePoints, playerTwoPoints)) {
-        return formatter.formatDrawScore(playerOnePoints);
+class GameService {
+    constructor() {
+        this.playerOne;
+        this.playerTwo;
     }
-    return formatter.formatScore(playerOnePoints, playerTwoPoints);
+
+    calculateScore(playerOne, playerTwo) {
+        this.playerOne = playerOne;
+        this.playerTwo = playerTwo;
+
+        if (this.isWin()) {
+            return formatter.win(this.getWinningPlayerName());
+        } else if (this.isAdvantage()) {
+            return formatter.advantage(this.getWinningPlayerName());
+        } else if (this.isDeuce()) {
+            return formatter.deuce();
+        } else if (this.isDraw()) {
+            return formatter.draw(this.playerOne.getPoints());
+        }
+        return formatter.score(this.playerOne.getPoints(), this.playerTwo.getPoints());
+    }
+
+    getWinningPlayerName() {
+        return this.playerOne.getPoints() > this.playerTwo.getPoints()
+            ? this.playerOne.getName()
+            : this.playerTwo.getName();
+    }
+
+    isAdvantage() {
+        return (
+            this.playerOne.getPoints() + this.playerTwo.getPoints() > DEUCE + DEUCE &&
+            this.hasPointDifferenceOfAtLeast(DIFFERENCE.ADVANTAGE)
+        );
+    }
+
+    hasPointDifferenceOfAtLeast(difference) {
+        return Math.abs(this.playerOne.getPoints() - this.playerTwo.getPoints()) >= difference;
+    }
+
+    isDeuce() {
+        return this.playerOne.getPoints() === this.playerTwo.getPoints() 
+            && this.playerOne.getPoints() >= DEUCE;
+    }
+
+    isDraw() {
+        return this.playerOne.getPoints() === this.playerTwo.getPoints();
+    }
+
+    isWin() {
+        return (
+            (this.playerOne.getPoints() >= WIN || this.playerTwo.getPoints() >= WIN) &&
+            this.hasPointDifferenceOfAtLeast(DIFFERENCE.WIN)
+        );
+    }
 }
 
-function getLeadingPlayerName(playerOne, playerTwo) {
-    return playerOne.getPoints() > playerTwo.getPoints() ? playerOne.getName() : playerTwo.getName();
-}
-
-function isAdvantage(playerOnePoints, playerTwoPoints) {
-    return (
-        playerOnePoints >= DEUCE_POINTS &&
-        playerTwoPoints >= DEUCE_POINTS &&
-        playerOnePoints + playerTwoPoints > DEUCE_POINTS + DEUCE_POINTS &&
-        hasPointDifferenceOfAtLeast(playerOnePoints, playerTwoPoints, ADVANTAGE_POINT_DIFFERENCE)
-    );
-}
-
-function hasPointDifferenceOfAtLeast(playerOnePoints, playerTwoPoints, difference) {
-    return Math.abs(playerOnePoints - playerTwoPoints) >= difference;
-}
-
-function isDeuce(playerOnePoints, playerTwoPoints) {
-    return playerOnePoints === playerTwoPoints && playerOnePoints >= DEUCE_POINTS;
-}
-
-function isDraw(playerOnePoints, playerTwoPoints) {
-    return playerOnePoints === playerTwoPoints;
-}
-
-function isWin(playerOnePoints, playerTwoPoints) {
-    return (
-        (playerOnePoints >= WINNING_POINTS || playerTwoPoints >= WINNING_POINTS) &&
-        hasPointDifferenceOfAtLeast(playerOnePoints, playerTwoPoints, WINNING_POINT_DIFFERENCE)
-    );
-}
-
-module.exports = {
-    calculateScore
-};
+module.exports = GameService;

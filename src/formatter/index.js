@@ -1,32 +1,30 @@
-const POINTS_TO_SCORE = ['love', 'fifteen', 'thirty', 'forty'];
-const DEUCE_SCORE = 'deuce!';
-const ADVANTAGE_SCORE = 'advantage';
-const GAME_WON_SCORE = 'Game';
+const { VERBAL_SCORES } = require('../constants');
+const { ADVANTAGE, DEUCE, LIST, WIN } = VERBAL_SCORES;
 
-function formatGameWon(winningPlayerName) {
-    return `${GAME_WON_SCORE}, ${winningPlayerName}`;
+function win(winningPlayerName) {
+    return `${WIN}, ${winningPlayerName}`;
 }
 
-function formatAdvantage(playerWithAdvantage) {
-    return `${ADVANTAGE_SCORE}, ${playerWithAdvantage}`;
+function advantage(playerWithAdvantage) {
+    return `${ADVANTAGE}, ${playerWithAdvantage}`;
 }
 
-function formatDeuce() {
-    return DEUCE_SCORE;
+function deuce() {
+    return DEUCE;
 }
 
-function formatDrawScore(playersPoints) {
-    return `${POINTS_TO_SCORE[playersPoints]} all`;
+function draw(playersPoints) {
+    return `${LIST[playersPoints]} all`;
 }
 
-function formatScore(playerOnePoints, playerTwoPoints) {
-    return `${POINTS_TO_SCORE[playerOnePoints]}, ${POINTS_TO_SCORE[playerTwoPoints]}`;
+function score(playerOnePoints, playerTwoPoints) {
+    return `${LIST[playerOnePoints]}, ${LIST[playerTwoPoints]}`;
 }
 
 module.exports = {
-    formatAdvantage,
-    formatDeuce,
-    formatDrawScore,
-    formatGameWon,
-    formatScore
+    advantage,
+    deuce,
+    draw,
+    score,
+    win
 };

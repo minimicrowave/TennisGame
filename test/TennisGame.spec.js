@@ -68,13 +68,6 @@ describe('TennisGame', () => {
             expect(game.score()).to.equal('advantage, Player 2');
         });
 
-        it('should return "advantage, Player 2" if player 2 scores an advantage point', () => {
-            const game = new TennisGame();
-            setGameToDeuce(game);
-            game.addPointToPlayerTwo();
-            expect(game.score()).to.equal('advantage, Player 2');
-        });
-
         it('should return "Game, {winningPlayer}" if player wins a game', () => {
             let game = new TennisGame();
             game.addPointToPlayerOne();
