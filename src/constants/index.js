@@ -1,10 +1,11 @@
 const POINTS = {
     DEUCE: 3,
-    WIN: 4,
     DIFFERENCE: {
         ADVANTAGE: 1,
         WIN: 2
-    }
+    },
+    STARTING: 0,
+    WIN: 4,
 };
 
 const DEFAULT_NAMES = {

@@ -1,9 +1,9 @@
-const DEFAULT_POINTS = 0;
+const { POINTS } = require('../../constants');
 
 class Player {
     constructor(playerName) {
         this.name = playerName;
-        this.points = DEFAULT_POINTS;
+        this.points = POINTS.STARTING;
     }
 
     getPoints() {
