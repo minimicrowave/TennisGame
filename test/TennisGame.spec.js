@@ -9,4 +9,10 @@ describe('TennisGame', () => {
 			expect(() => new TennisGame('c', 10)).to.throw(`Score "c" is not a number.`);
 		});
 	});
+	describe('Check for equal score between players', () => {
+		let tennisGame = new TennisGame();
+		it('Should return "hello, 0, 0" if no input is entered.', () => {
+			expect(tennisGame.tallyScore()).to.equal('hello, 0, 0');
+		});
+	});
 });
