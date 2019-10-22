@@ -3,6 +3,10 @@ class Player {
 		this.score = score;
 		this.name = name;
 	}
+
+	addScore() {
+		this.score += 1;
+	}
 }
 
 module.exports = Player;

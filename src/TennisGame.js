@@ -4,8 +4,13 @@ class TennisGame {
 	constructor(playerOneScore, playerTwoScore) {
 		validateScore(playerOneScore);
 		validateScore(playerTwoScore);
-		console.log('hi', tennisGame);
+
+		this.playerOne = new Player(playerOneName);
+		this.playerTwo = new Player(playerTwoName);
 	}
+
+    tallyScore() {}
+    
 }
 
 module.exports = TennisGame;
