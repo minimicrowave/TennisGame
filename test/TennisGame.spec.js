@@ -1,4 +1,12 @@
-const { expect } = require("chai");
-it("run a dummy test", () => {
-  expect(1).to.equal(1);
+const { expect } = require('chai');
+const TennisGame = require('../src/TennisGame');
+
+describe('TennisGame', () => {
+	describe('- Error Catching', () => {
+		it('Should throw TypeError if score is not a number', () => {
+			expect(() => new TennisGame('a', 'b')).to.throw(`Score "a" is not a number.`);
+			expect(() => new TennisGame(2, 'b')).to.throw(`Score "b" is not a number.`);
+			expect(() => new TennisGame('c', 10)).to.throw(`Score "c" is not a number.`);
+		});
+	});
 });
