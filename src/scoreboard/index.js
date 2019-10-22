@@ -1,8 +1,5 @@
-class ScoreBoard {
-	constructor(playerOneScore = 0, playerTwoScore = 0) {
-		this.playerOneScore = playerOneScore;
-		this.playerTwoScore = playerTwoScore;
-	}
+function checkScore(playerOneScore = 0, playerTwoScore = 0) {
+	return `hello, ${playerOneScore}, ${playerTwoScore}`;
 }
 
-module.exports = ScoreBoard;
+module.exports = { checkScore };
