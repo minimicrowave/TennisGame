@@ -1,5 +1,5 @@
 const { validateScore } = require('./validation');
-const { checkScore } = require('./scoreboard');
+const ScoreBoard = require('./scoreboard');
 const Player = require('./player');
 
 class TennisGame {
@@ -9,18 +9,25 @@ class TennisGame {
 
 		this.playerOne = new Player(playerOneScore);
 		this.playerTwo = new Player(playerTwoScore);
+		this.scoreBoard = new ScoreBoard(playerOneScore, playerTwoScore);
 	}
 
 	addScoreToPlayerOne() {
-		this.playerOne.addScore();
+        this.playerOne.addScore();
+        this.updateScoreBoard();
+	}
+    
+	addScoreToPlayerTwo() {
+        this.playerTwo.addScore();
+        this.updateScoreBoard();
 	}
 
-	addScoreToPlayerTwo() {
-		this.playerTwo.addScore();
+	updateScoreBoard() {
+		this.scoreBoard.update(this.playerOne.score, this.playerTwo.score);
 	}
 
 	tallyScore() {
-		return checkScore(this.playerOne.score, this.playerTwo.score);
+		return this.scoreBoard.retrieve();
 	}
 }
 
