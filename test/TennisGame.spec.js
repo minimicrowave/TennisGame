@@ -24,8 +24,8 @@ describe('TennisGame', () => {
 
 			expect(tennisGame.tallyScore()).to.equal('fifteen all');
 			expect(tennisGame1.tallyScore()).to.equal('fifteen all');
-    });
-    
+		});
+
 		it('Should return "thirty all" if score is (2, 2).', () => {
 			const tennisGame = new TennisGame();
 			const tennisGame1 = new TennisGame(2, 2);
@@ -36,8 +36,8 @@ describe('TennisGame', () => {
 
 			expect(tennisGame.tallyScore()).to.equal('thirty all');
 			expect(tennisGame1.tallyScore()).to.equal('thirty all');
-    });
-    
+		});
+
 		it('Should return "deuce" if score is (3, 3).', () => {
 			const tennisGame = new TennisGame();
 			const tennisGame1 = new TennisGame(3, 3);
@@ -48,8 +48,33 @@ describe('TennisGame', () => {
 			tennisGame.addScoreToPlayerTwo();
 			tennisGame.addScoreToPlayerTwo();
 
-			expect(tennisGame.tallyScore()).to.equal('deuce');
-			expect(tennisGame1.tallyScore()).to.equal('deuce');
+			expect(tennisGame.tallyScore()).to.equal('deuce!');
+			expect(tennisGame1.tallyScore()).to.equal('deuce!');
+		});
+
+		it('Should return "fifteen, love" if score is (1, 0).', () => {
+			const tennisGame = new TennisGame();
+			tennisGame.addScoreToPlayerOne();
+
+			expect(tennisGame.tallyScore()).to.equal('fifteen, love');
+		});
+
+		it('Should return "love, forty" if score is (0, 3).', () => {
+			const tennisGame = new TennisGame();
+			tennisGame.addScoreToPlayerTwo();
+			tennisGame.addScoreToPlayerTwo();
+			tennisGame.addScoreToPlayerTwo();
+
+			expect(tennisGame.tallyScore()).to.equal('love, forty');
+		});
+
+		it('Should return "thirty, fifteen" if score is (2, 1).', () => {
+			const tennisGame = new TennisGame();
+			tennisGame.addScoreToPlayerOne();
+			tennisGame.addScoreToPlayerTwo();
+			tennisGame.addScoreToPlayerOne();
+
+			expect(tennisGame.tallyScore()).to.equal('thirty, fifteen');
 		});
 	});
 });
