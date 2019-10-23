@@ -7,6 +7,10 @@ class Player {
 	addScore() {
 		this.score += 1;
 	}
+
+	setName(name) {
+		this.name = name;
+	}
 }
 
 module.exports = Player;

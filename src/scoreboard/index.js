@@ -27,7 +27,7 @@ class ScoreBoard {
 				return `${SCORE_NAME_MAP[playerOneScore]} all`;
 			}
 		} else if (this.isDeuce) {
-			return `${ADVANTAGE_TEXT} Player ${this.hasMoreScore()}`;
+			return `${ADVANTAGE_TEXT} ${this.hasMoreScore()}`;
 		} else {
 			return `${SCORE_NAME_MAP[playerOneScore]}, ${SCORE_NAME_MAP[playerTwoScore]}`;
 		}
@@ -36,7 +36,7 @@ class ScoreBoard {
 	isWin() {
 		let [ lowerScore, higherScore ] = arraySortByAscending([
 			this.playerOne.score,
-			this.playerTwo.Score
+			this.playerTwo.score
 		]);
 
 		if (higherScore >= WINNING_SCORE && higherScore - lowerScore >= DEUCE_SCORE_DIFFERENCE)
@@ -49,12 +49,12 @@ class ScoreBoard {
 	}
 
 	hasMoreScore() {
-		return this.playerOne.score > this.playerTwo.score ? 1 : 2;
+		return this.playerOne.score > this.playerTwo.score ? this.playerOne.name : this.playerTwo.name;
 	}
 
 	getScore() {
 		if (this.isWin()) {
-			return `Game, Player ${this.hasMoreScore()}`;
+			return `Game, ${this.hasMoreScore()}`;
 		}
 		return this.compute();
 	}
