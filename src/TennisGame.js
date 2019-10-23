@@ -10,7 +10,11 @@ class TennisGame {
 		this.playerOne = new Player(playerOneScore);
 		this.playerTwo = new Player(playerTwoScore);
 		this.scoreBoard = new ScoreBoard(this.playerOne, this.playerTwo, isDeuce);
-	}
+    }
+    
+    setPlayerOneName(name) {
+        this.playerOne.setName(name);
+    }
 
 	addScoreToPlayerOne() {
 		this.playerOne.addScore();

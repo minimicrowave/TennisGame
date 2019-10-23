@@ -1,19 +1,12 @@
 const { arraySortByAscending } = require('../utils');
-
-const SCORE_NAME_MAP = {
-	0: 'love',
-	1: 'fifteen',
-	2: 'thirty',
-	3: 'forty'
-};
-
-const DEUCE_SCORE = 'deuce!';
-
-const ADVANTAGE_SCORE = 'advantage';
-
-const WINNING_SCORE = 4;
-const DEUCE_SCORE_MINIMUM = 3;
-const DEUCE_SCORE_DIFFERENCE = 2;
+const {
+	SCORE_NAME_MAP,
+	DEUCE_TEXT,
+	ADVANTAGE_TEXT,
+	WINNING_SCORE,
+	DEUCE_SCORE_DIFFERENCE,
+	DEUCE_SCORE_MINIMUM
+} = require('../consts');
 
 class ScoreBoard {
 	constructor(playerOne, playerTwo, isDeuce) {
@@ -29,12 +22,12 @@ class ScoreBoard {
 		if (this.isSameScore()) {
 			if (playerOneScore >= DEUCE_SCORE_MINIMUM) {
 				this.isDeuce = true;
-				return DEUCE_SCORE;
+				return DEUCE_TEXT;
 			} else {
 				return `${SCORE_NAME_MAP[playerOneScore]} all`;
 			}
 		} else if (this.isDeuce) {
-			return `${ADVANTAGE_SCORE} Player ${this.hasMoreScore()}`;
+			return `${ADVANTAGE_TEXT} Player ${this.hasMoreScore()}`;
 		} else {
 			return `${SCORE_NAME_MAP[playerOneScore]}, ${SCORE_NAME_MAP[playerTwoScore]}`;
 		}
